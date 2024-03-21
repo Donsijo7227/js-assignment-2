@@ -32,3 +32,16 @@ h6 {
     font-weight: 700;
     font-size: 12px;
 }
+
+.main-content-area{
+    display: flex;
+    flex-direction: row;
+}
+
+.left-side-nav{
+    width: 30%;
+}
+
+.main-content-area{
+    width: 70%;
+}
