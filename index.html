@@ -5,28 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="css/main.css" rel="stylesheet" />
-</head>
+    <script src="js/srcipt.js" defer></script>
+</head> 
 <body>
-    <div class="container">
         <div class="top-bar">
             <h1>Top bar</h1>
         </div>
-        <main class="main-content-area">
+        <main>
             <div class="left-side-nav">
-                <h3>left side nav</h3>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="orders.html">Orders</a>
+                </nav>
             </div>
             <div class="main-content-area">
-                <h3>main content area</h3>
                 <div class="form-area">
-                    <form >
-                        <label>Enter the number</label>
-                        <input type="number">
-                    </form>
+                  <form id="smoothieForm">
+                      <label for="flavor">Select Flavor:</label>
+                      <select id="flavor" name="flavor">
+                          <option value="strawberry">Strawberry</option>
+                          <option value="chocolate">Chocolate</option>
+                          <option value="banana">Banana</option>
+                          <option value="mango">Mango</option>
+                          <option value="blueberry">Blueberry</option>
+                      </select>
+ 
+                      <label for="size">Select Size:</label>
+                      <select id="size" name="size">
+                          <option value="Small">Small</option>
+                          <option value="Medium">Medium</option>
+                          <option value="Large">Large</option>
+                      </select>
+
+                      <label for="toppings">Toppings:</label>
+                      <select id="toppings" name="toppings">
+                        <option value="granola">Granola</option>
+                        <option value="slicedAlmonds">Sliced Almonds</option>
+                        <option value="chocolateChips">Chocolate Chips</option>
+                        <option value="pumpkinSeeds">Pumpkin Seeds</option>
+                     </select>
+
+                      <label for="specialInstructions">Special Instructions:</label>
+                      <textarea id="specialInstructions" name="specialInstructions" placeholder="Enter special instructions"></textarea>
+
+                      <button type="button" onclick="orderSmoothie()">Place Order</button>
+                  </form>
+
                 </div>
             </div>
-            <footer>
+            
+        </main>
+        <footer>
                 <small><p>Made by Don Sijo</p></small>
             </footer>
-    </div>
+    <!-- </div> -->
 </body>
 </html>
