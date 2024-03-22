@@ -33,15 +33,15 @@ h6 {
     font-size: 12px;
 }
 
-.main-content-area{
+.main-content-area {
     display: flex;
     flex-direction: row;
 }
 
-.left-side-nav{
+.left-side-nav {
     width: 30%;
 }
 
-.main-content-area{
+.main-content-area {
     width: 70%;
 }
