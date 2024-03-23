@@ -32,15 +32,15 @@
                       </select>
  
                       <label for="size">Select Size:</label>
-                      <select id="size" name="size">
-                          <option value="">Select Size</option>
+                      <select id="size" name="size" onchange="dynamicPriceSize()">
+                          <option value="none">Select Size</option>
                           <option value="small">Small</option>
                           <option value="medium">Medium</option>
                           <option value="large">Large</option>
                       </select>
 
                       <label for="toppings">Toppings:</label>
-                      <select id="toppings" name="toppings">
+                      <select id="toppings" name="toppings" onchange="dynamicPriceTopping()">
                         <option value="none">Select Topping</option>
                         <option value="granola">Granola</option>
                         <option value="slicedAlmonds">Sliced Almonds</option>
@@ -55,7 +55,7 @@
                   </form>
                   <div id="smoothieDescription"></div>
                   <div id="dynamic">
-                    <h1>$<span id="dynamicContent"></span></h1>
+                    <h1>$<span id="dynamicContent">0.00</span></h1>
                   </div>
                   <div id="total"></div>
 

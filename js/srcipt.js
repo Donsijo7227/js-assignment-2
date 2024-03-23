@@ -10,6 +10,7 @@ const flavourPrices = {
 
 const sizePrices = {
   small: 0,
+  none: 0,
   medium: 1.50,
   large: 2.50,
 };
@@ -22,7 +23,12 @@ const toppingPrices = {
   pumpkinSeeds: 0.20
 };
 
-
+let tempFlavor = 0;
+let tempSize = 0;
+let tempToppings = 0;
+// let flavor = 0;
+// let size = 0;
+// let toppings = 0;
 
 //function for geting the form values when the place-order button is clicked by the user 
 function orderSmoothie() {
@@ -38,7 +44,7 @@ function orderSmoothie() {
 
   //function for calculating total 
   const totalPrice = totalPriceCalculator(flavor, size, toppings);
-  document.getElementById("total").textContent = totalPrice;
+  document.getElementById("total").textContent = totalPrice.toFixed(2);
 
   //smoothie object constructor
   const smoothie = new Smoothie(flavor, size, toppings, specialInstructions);
@@ -95,20 +101,64 @@ function dynamicPriceFlavour() {
   const flavor = document.getElementById('flavor').value;
   price = flavourPrices[flavor];
   //console.log(flavor);
-  //console.log(price);
+  //console.log('Price: ', price);
 
-  updatePrice(price);
+  updatePrice(price, 'flavor');
+}
+function dynamicPriceSize() {
+  //console.log(counter);
+  const size = document.getElementById('size').value;
+  price = sizePrices[size];
+  //console.log(flavor);
+  //console.log('size: ', price);
+
+  updatePrice(price, 'size');
+}
+function dynamicPriceTopping() {
+  //console.log(counter);
+  const topping = document.getElementById('toppings').value;
+  price = toppingPrices[topping];
+  //console.log(flavor);
+  //console.log('toppings: ', price);
+
+  updatePrice(price, 'toppings');
 }
 
-function updatePrice(price) {
+
+function updatePrice(price, option) {
   let newPrice = price;
-  dynamicPrice(newPrice);
+  dynamicPrice(newPrice, option);
   //console.log('final: ', newPrice);
 
 }
 
-function dynamicPrice(newPrice) {
+function dynamicPrice(newPrice, option) {
+
+  // if (option == 'flavor') {
+  //   tempFlavor = newPrice;
+  //   console.log('tempFlavour', tempFlavor);
+  // } else if (option == 'size') {
+  //   tempSize = newPrice
+  // } else {
+  //   tempToppings = newPrice;
+  // }
+  switch (option) {
+    case 'flavor':
+      //flavor = newPrice
+      tempFlavor = newPrice;
+      break;
+    case 'size':
+      //size = newPrice
+      tempSize = newPrice;
+      break;
+    case 'toppings':
+      //toppings = newPrice;
+      tempToppings = newPrice;
+      break
+  }
   // console.log(newPrice)
-  // newPrice = newPrice + newPrice;
-  document.getElementById("dynamicContent").textContent = newPrice;
+  // newPrice = newPrice + n= flavour + size + toppings;
+  let updatedPrice = tempFlavor + tempSize + tempToppings;
+  //console.log(updatedPrice);
+  document.getElementById("dynamicContent").textContent = updatedPrice.toFixed(2);
 }
