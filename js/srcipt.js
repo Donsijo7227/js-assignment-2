@@ -26,9 +26,9 @@ const toppingPrices = {
 let tempFlavor = 0;
 let tempSize = 0;
 let tempToppings = 0;
-// let flavor = 0;
-// let size = 0;
-// let toppings = 0;
+
+
+
 
 //function for geting the form values when the place-order button is clicked by the user 
 function orderSmoothie() {
@@ -38,10 +38,14 @@ function orderSmoothie() {
   const specialInstructions = document.getElementById('specialInstructions').value;
 
   //condition for checking if the user has selected flavour and size | if not alerting the user to select 
-  if (!flavor || !size) {
+  if (flavor == 'none' || size == 'none') {
     alert("Please select flavour and size!");
+    refreshPage();
   }
-
+  //function to handle description and total section when user inputs nothing and then the aler comes up then some random message will be shown in the bill area 
+  function refreshPage() {
+    location.reload();
+  }
   //function for calculating total 
   const totalPrice = totalPriceCalculator(flavor, size, toppings);
   document.getElementById("total").textContent = totalPrice.toFixed(2);
@@ -54,23 +58,26 @@ function orderSmoothie() {
   const smoothieDescription = smoothie.getDescription();
   //displaying the description to the user 
   document.getElementById("smoothieDescription").textContent = smoothieDescription;
-
-  //console.log(flavourPrices[flavor]);
-
   //function for clearing the form once the user hits place-order button
-  clearForm();
+  //clearForm();
 
 }
-//clears form
+//clears the form, sets the html fields to default and also sets the temp variables to zero which were used to capture the prices 
 function clearForm() {
   document.getElementById(`smoothieForm`).reset();
+  document.getElementById(`dynamicContent`).textContent = '0.00';
+  document.getElementById(`smoothieDescription`).textContent = "";
+  document.getElementById(`total`).textContent = "";
+  tempFlavor = 0;
+  tempSize = 0;
+  tempToppings = 0;
 }
-
+//total price calculation
 function totalPriceCalculator(flavor, size, toppings) {
   let totalPrice = flavourPrices[flavor] + sizePrices[size] + toppingPrices[toppings];
   return totalPrice;
 }
-
+//object
 class Smoothie {
   constructor(flavor, size, toppings, specialInstructions) {
     this.flavor = flavor;
@@ -88,39 +95,27 @@ class Smoothie {
       description += `topped with ${this.toppings}`;
     }
     if (this.specialInstructions) {
-      description += `.Special Instructions: ${this.specialInstructions} `;
+      description += `,with the special instruction '${this.specialInstructions}' `;
     }
 
     return description;
   }
 }
 
-
+//functions for dynamically displaying the total price while the user select different options 
 function dynamicPriceFlavour() {
-  //console.log(counter);
   const flavor = document.getElementById('flavor').value;
   price = flavourPrices[flavor];
-  //console.log(flavor);
-  //console.log('Price: ', price);
-
   updatePrice(price, 'flavor');
 }
 function dynamicPriceSize() {
-  //console.log(counter);
   const size = document.getElementById('size').value;
   price = sizePrices[size];
-  //console.log(flavor);
-  //console.log('size: ', price);
-
   updatePrice(price, 'size');
 }
 function dynamicPriceTopping() {
-  //console.log(counter);
   const topping = document.getElementById('toppings').value;
   price = toppingPrices[topping];
-  //console.log(flavor);
-  //console.log('toppings: ', price);
-
   updatePrice(price, 'toppings');
 }
 
@@ -128,37 +123,21 @@ function dynamicPriceTopping() {
 function updatePrice(price, option) {
   let newPrice = price;
   dynamicPrice(newPrice, option);
-  //console.log('final: ', newPrice);
-
 }
 
 function dynamicPrice(newPrice, option) {
-
-  // if (option == 'flavor') {
-  //   tempFlavor = newPrice;
-  //   console.log('tempFlavour', tempFlavor);
-  // } else if (option == 'size') {
-  //   tempSize = newPrice
-  // } else {
-  //   tempToppings = newPrice;
-  // }
   switch (option) {
     case 'flavor':
-      //flavor = newPrice
       tempFlavor = newPrice;
       break;
     case 'size':
-      //size = newPrice
       tempSize = newPrice;
       break;
     case 'toppings':
-      //toppings = newPrice;
       tempToppings = newPrice;
       break
   }
-  // console.log(newPrice)
-  // newPrice = newPrice + n= flavour + size + toppings;
   let updatedPrice = tempFlavor + tempSize + tempToppings;
-  //console.log(updatedPrice);
   document.getElementById("dynamicContent").textContent = updatedPrice.toFixed(2);
 }
+

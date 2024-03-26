@@ -4,68 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="css/main.css" rel="stylesheet" />
-    <script src="js/srcipt.js" defer></script>
-</head> 
+    <link href="css/main.css" rel="stylesheet" /> <!-- Link to external CSS file -->
+    <script src="js/srcipt.js" defer></script> <!-- Link to external JavaScript file -->
+</head>
 <body>
-        <div class="top-bar">
-            <h1>Top bar</h1>
+    <div class="top-bar"> <!-- Top bar section -->
+        <h1>The Smoothie Spot</h1> <!-- Heading for the top bar -->
+    </div>
+    <main>
+        <div class="left-side-nav"> <!-- Left side navigation section -->
+            <img src="images/Vector-Smoothie-PNG-Clipart.png" alt="smoothie images"> <!-- Image for left side navigation -->
         </div>
-        <main>
-            <div class="left-side-nav">
-                <nav>
-                    <a href="index.html">Home</a>
-                    <a href="orders.html">Orders</a>
-                </nav>
-            </div>
-            <div class="main-content-area">
-                <div class="form-area">
-                  <form id="smoothieForm">
-                      <label for="flavor">Select Flavor:</label>
-                      <select id="flavor" name="flavor" onchange="dynamicPriceFlavour()">
-                          <option value="none">Select Flavor</option>
-                          <option value="strawberry" >Strawberry</option>
-                          <option value="chocolate" >Chocolate</option>
-                          <option value="banana" >Banana</option>
-                          <option value="mango" >Mango</option>
-                          <option value="blueberry" >Blueberry</option>
-                      </select>
- 
-                      <label for="size">Select Size:</label>
-                      <select id="size" name="size" onchange="dynamicPriceSize()">
-                          <option value="none">Select Size</option>
-                          <option value="small">Small</option>
-                          <option value="medium">Medium</option>
-                          <option value="large">Large</option>
-                      </select>
 
-                      <label for="toppings">Toppings:</label>
-                      <select id="toppings" name="toppings" onchange="dynamicPriceTopping()">
-                        <option value="none">Select Topping</option>
-                        <option value="granola">Granola</option>
-                        <option value="slicedAlmonds">Sliced Almonds</option>
-                        <option value="chocolateChips">Chocolate Chips</option>
-                        <option value="pumpkinSeeds">Pumpkin Seeds</option>
-                     </select>
+        <div class="main-content-area"> <!-- Main content area -->
+            <div class="form-area"> <!-- Form area -->
+                <div class="form-field"> <!-- Form field section -->
 
-                      <label for="specialInstructions">Special Instructions:</label>
-                      <textarea id="specialInstructions" name="specialInstructions" placeholder="Enter special instructions"></textarea>
+                    <form id="smoothieForm"> <!-- Smoothie order form -->
+                        <label for="flavor">Select Flavor:</label> <!-- Flavor selection label -->
+                        <select id="flavor" name="flavor" onchange="dynamicPriceFlavour()"> <!-- Flavor selection dropdown -->
+                            <option value="none">Select Flavor</option> <!-- Default option -->
+                            <option value="strawberry">Strawberry - $4.99</option> <!-- Flavor options -->
+                            <option value="chocolate">Chocolate - $5.99</option>
+                            <option value="banana">Banana - $3.50</option>
+                            <option value="mango">Mango - $4.99</option>
+                            <option value="blueberry">Blueberry - $4.29</option>
+                        </select>
 
-                      <button type="button" onclick="orderSmoothie()">Place Order</button>
-                  </form>
-                  <div id="smoothieDescription"></div>
-                  <div id="dynamic">
-                    <h1>$<span id="dynamicContent">0.00</span></h1>
-                  </div>
-                  <div id="total"></div>
+                        <label for="size">Select Size:</label> <!-- Size selection label -->
+                        <select id="size" name="size" onchange="dynamicPriceSize()"> <!-- Size selection dropdown -->
+                            <option value="none">Select Size</option> <!-- Default option -->
+                            <option value="small">Small - $0</option> <!-- Size options -->
+                            <option value="medium">Medium - $1.50</option>
+                            <option value="large">Large - 2.50</option>
+                        </select>
 
+                        <label for="toppings">Toppings:</label> <!-- Toppings selection label -->
+                        <select id="toppings" name="toppings" onchange="dynamicPriceTopping()"> <!-- Toppings selection dropdown -->
+                            <option value="none">Select Topping</option> <!-- Default option -->
+                            <option value="granola">Granola - $0.50</option> <!-- Topping options -->
+                            <option value="slicedAlmonds">Sliced Almonds - $0.80</option>
+                            <option value="chocolateChips">Chocolate Chips - $0.50</option>
+                            <option value="pumpkinSeeds">Pumpkin Seeds - $0.20</option>
+                        </select>
+                        <label for="specialInstructions">Special Instructions:</label> <!-- Special instructions label -->
+                        <textarea id="specialInstructions" name="specialInstructions" placeholder="Enter special instructions"></textarea> <!-- Textarea for special instructions -->
+                        <button type="button" onclick="orderSmoothie()">Place Order</button> <!-- Button to place order -->
+                    </form>
+
+                    <div id="dynamic"> <!-- Dynamic content area -->
+                        <h1>Your total will be: $ <span id="dynamicContent">0.00</span></h1> <!-- Total price display -->
+                        <button onclick="clearForm()" class="clearbutton">Clear form</button> <!-- Button to clear form -->
+                    </div>
+                </div>
+            </div><!--end of form-area-->
+            <div class="billarea"> <!-- Bill area section -->
+                <h3>Bill:</h3> <!-- Bill heading -->
+                <div>
+                    <p><span class="desc-style">Order summery: </span><span id="smoothieDescription"></span> </p> <!-- Summary of the order -->
+                </div>
+                <div >
+                    <p><span class="desc-style">Total: </span><span id="total"></span></p> <!-- Total bill amount -->
                 </div>
             </div>
-            
-        </main>
-        <footer>
-                <small><p>Made by Don Sijo</p></small>
-            </footer>
-    <!-- </div> -->
+        </div><!--end of main-content-area-->
+    </main>
+    <footer>
+        <small><p>Made by Don Sijo</p></small> <!-- Footer information -->
+    </footer>
 </body>
 </html>
